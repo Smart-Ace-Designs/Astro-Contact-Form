@@ -11,7 +11,7 @@
   --color-theme-grey-medium: hsl(186, 15%, 59%);
   --color-theme-grey-darker: hsl(187, 24%, 22%);
 
-  --font-poppins: "Karla", "sans-serif";
+  --font-karla: "Karla", "sans-serif";
 }
 
 @layer base {
