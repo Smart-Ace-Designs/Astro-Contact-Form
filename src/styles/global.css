@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary */
+  --color-theme-green-lighter: hsl(148, 38%, 91%);
+  --color-theme-green-medium: hsl(169, 82%, 27%);
+  --color-theme-red: hsl(0, 66%, 54%);
+
+  /* Neutral */
+  --color-theme-white: hsl(0, 0%, 100%);
+  --color-theme-grey-medium: hsl(186, 15%, 59%);
+  --color-theme-grey-darker: hsl(187, 24%, 22%);
+
+  --font-poppins: "Karla", "sans-serif";
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@font-face {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 400 700;
+  src: url("/fonts/Karla-VariableFont_wght.ttf") format("truetype");
+  font-display: swap;
+}
