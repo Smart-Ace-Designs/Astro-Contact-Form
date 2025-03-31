@@ -5,26 +5,42 @@ import MainLayout from "@/layouts/MainLayout.astro";
 <MainLayout title="Frontend Mentor | Contact Form">
   <main class="bg-theme-green-lighter flex h-screen justify-center py-8">
     <div class="bg-theme-white max-w-80 rounded-2xl p-6">
-      <h1>Contact Us</h1>
+      <h1 class="text-theme-grey-darker mb-8 text-3xl font-bold">Contact Us</h1>
       <form action="">
-        <label for="first-name">First Name</label>
-        <input type="text" id="first-name" name="first-name" />
-        <label for="last-name">Last Name</label>
-        <input type="text" id="last-name" name="last-name" />
-        <label for="email-address">Email Address</label>
-        <input type="text" id="email-address" name="email-address" />
-        <fieldset id="query-type">
+        <div class="flex flex-col">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" name="first-name" />
+        </div>
+        <div class="flex flex-col">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="last-name" />
+        </div>
+        <div class="flex flex-col">
+          <label for="email-address">Email Address</label>
+          <input type="text" id="email-address" name="email-address" />
+        </div>
+        <fieldset id="query-type" class="flex flex-col items-start">
           <legend>Query Type</legend>
-          <label for="general-inquiry"></label>
-          <input type="radio" id="general-inquiry" name="type" value="general-inquiry" />
-          <label for="support-request"></label>
-          <input type="radio" id="support-request" name="type" value="support-request" />
+          <div class="flex">
+            <input type="radio" id="general-inquiry" name="type" value="general-inquiry" />
+            <label for="general-inquiry">General Inquiry</label>
+          </div>
+          <div class="flex">
+            <input type="radio" id="support-request" name="type" value="support-request" />
+            <label for="support-request">Support Request</label>
+          </div>
         </fieldset>
-        <label for="messsage">Message</label>
-        <textarea name="message" id="message"></textarea>
-        <input type="checkbox" id="consent" name="consent" />
-        <label for="consent">I consent to being contacted by the team</label>
-        <button>Submit</button>
+        <div class="flex flex-col">
+          <label for="messsage">Message</label>
+          <textarea name="message" id="message"></textarea>
+        </div>
+        <div class="flex gap-x-4">
+          <input type="checkbox" id="consent" name="consent" />
+          <label for="consent">I consent to being contacted by the team</label>
+        </div>
+        <button class="bg-theme-green-medium text-theme-white w-full rounded-lg py-4 text-lg"
+          >Submit</button
+        >
       </form>
     </div>
   </main>
