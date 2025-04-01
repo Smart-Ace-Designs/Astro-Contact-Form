@@ -3,57 +3,73 @@ import MainLayout from "@/layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Frontend Mentor | Contact Form">
-  <main class="bg-theme-green-lighter flex h-screen justify-center py-8">
-    <div class="bg-theme-white max-w-80 rounded-2xl p-6">
+  <main class="bg-theme-green-lighter flex min-h-screen justify-center py-8">
+    <div class="bg-theme-white min-h-screen max-w-85 rounded-2xl p-6">
       <h1 class="text-theme-grey-darker mb-8 text-3xl font-bold">Contact Us</h1>
       <form action="">
         <div class="flex flex-col">
-          <label for="first-name">First Name</label>
+          <label for="first-name" class="mb-2">First Name</label>
           <input
             type="text"
             id="first-name"
             name="first-name"
-            class="border-theme-green-medium mb-3 rounded-md border-1 p-2"
+            class="border-theme-green-medium mb-6 rounded-lg border-1 p-3"
           />
         </div>
         <div class="flex flex-col">
-          <label for="last-name">Last Name</label>
+          <label for="last-name" class="mb-2">Last Name</label>
           <input
             type="text"
             id="last-name"
             name="last-name"
-            class="border-theme-green-medium mb-3 rounded-md border-1 p-2"
+            class="border-theme-green-medium mb-6 rounded-lg border-1 p-3"
           />
         </div>
         <div class="flex flex-col">
-          <label for="email-address">Email Address</label>
+          <label for="email-address" class="mb-2">Email Address</label>
           <input
             type="text"
             id="email-address"
             name="email-address"
-            class="border-theme-green-medium mb-3 rounded-md border-1 p-2"
+            class="border-theme-green-medium mb-6 rounded-lg border-1 p-3"
           />
         </div>
-        <fieldset id="query-type" class="mb-2 flex flex-col items-start gap-3">
-          <legend>Query Type</legend>
-          <div class="border-theme-green-medium flex w-full gap-2 rounded-md border-1 p-3">
-            <input type="radio" id="general-inquiry" name="type" value="general-inquiry" />
-            <label for="general-inquiry">General Inquiry</label>
+        <fieldset id="query-type" class="mb-7 flex flex-col items-start gap-4">
+          <legend class="mb-4">Query Type</legend>
+          <div
+            class="border-theme-green-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
+          >
+            <input
+              type="radio"
+              id="general-inquiry"
+              name="type"
+              value="general-inquiry"
+              class="size-5 appearance-none rounded-full border-2 border-gray-300 checked:border-green-500 checked:bg-green-500"
+            />
+            <label for="general-inquiry" class="text-lg">General Inquiry</label>
           </div>
-          <div class="border-theme-green-medium flex w-full gap-2 rounded-md border-1 p-3">
-            <input type="radio" id="support-request" name="type" value="support-request" />
-            <label for="support-request">Support Request</label>
+          <div
+            class="border-theme-green-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
+          >
+            <input
+              type="radio"
+              id="support-request"
+              name="type"
+              value="support-request"
+              class="size-5 appearance-none rounded-full border-2 border-gray-300 checked:border-green-500 checked:bg-green-500"
+            />
+            <label for="support-request" class="text-lg">Support Request</label>
           </div>
         </fieldset>
         <div class="flex flex-col">
-          <label for="messsage">Message</label>
+          <label for="messsage" class="mb-2">Message</label>
           <textarea
             name="message"
             id="message"
-            class="border-theme-green-medium resize-none rounded-md border-1"></textarea>
+            class="border-theme-green-medium mb-8 h-60 resize-none rounded-lg border-1"></textarea>
         </div>
-        <div class="flex gap-x-4">
-          <input type="checkbox" id="consent" name="consent" />
+        <div class="mb-10 flex items-center gap-x-5">
+          <input type="checkbox" id="consent" name="consent" class="size-5" />
           <label for="consent">I consent to being contacted by the team</label>
         </div>
         <button class="bg-theme-green-medium text-theme-white w-full rounded-lg py-4 text-lg"
