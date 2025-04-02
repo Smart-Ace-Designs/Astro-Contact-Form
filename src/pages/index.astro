@@ -95,12 +95,12 @@ import MainLayout from "@/layouts/MainLayout.astro";
     const radioButtons: NodeListOf<HTMLElement> = document.querySelectorAll("input[type='radio']");
     radioButtons.forEach((radioButton) => {
       radioButton.addEventListener("click", (event) => {
-        const target: HTMLElement | null = event.target as HTMLElement;
+        const target: HTMLElement = event.target as HTMLElement;
         if (target) {
-          const parentDiv: HTMLElement | null = document.getElementById(target.id);
-          if (parentDiv) {
-            parentDiv.classList.toggle("bg-theme-green-lighter");
-            parentDiv.classList.toggle("border-theme-green-medium");
+          const parent = document.getElementById(target.id)?.parentElement;
+          if (parent) {
+            parent.classList.toggle("bg-theme-green-lighter");
+            parent.classList.toggle("border-theme-green-medium");
           }
         }
       });
