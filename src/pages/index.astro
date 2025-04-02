@@ -13,7 +13,8 @@ import MainLayout from "@/layouts/MainLayout.astro";
             type="text"
             id="first-name"
             name="first-name"
-            class="border-theme-green-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer"
+            class="border-theme-grey-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer"
+            autocomplete="given-name"
           />
         </div>
         <div class="flex flex-col">
@@ -22,7 +23,8 @@ import MainLayout from "@/layouts/MainLayout.astro";
             type="text"
             id="last-name"
             name="last-name"
-            class="border-theme-green-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer"
+            class="border-theme-grey-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer"
+            autocomplete="family-name"
           />
         </div>
         <div class="flex flex-col">
@@ -31,13 +33,14 @@ import MainLayout from "@/layouts/MainLayout.astro";
             type="text"
             id="email-address"
             name="email-address"
-            class="border-theme-green-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer"
+            class="border-theme-grey-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer"
+            autocomplete="email"
           />
         </div>
         <fieldset id="query-type" class="mb-7 flex flex-col items-start gap-4">
           <legend class="mb-4">Query Type</legend>
           <div
-            class="border-theme-green-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
+            class="border-theme-grey-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
           >
             <input
               type="radio"
@@ -49,7 +52,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
             <label for="general-inquiry" class="text-lg">General Inquiry</label>
           </div>
           <div
-            class="border-theme-green-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
+            class="border-theme-grey-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
           >
             <input
               type="radio"
@@ -62,15 +65,20 @@ import MainLayout from "@/layouts/MainLayout.astro";
           </div>
         </fieldset>
         <div class="flex flex-col">
-          <label for="messsage" class="mb-2">Message</label>
+          <label for="message" class="mb-2">Message</label>
           <textarea
             name="message"
             id="message"
-            class="border-theme-green-medium mb-8 h-60 resize-none rounded-lg border-1 px-4 py-2 hover:cursor-pointer"
+            class="border-theme-grey-medium mb-8 h-60 resize-none rounded-lg border-1 px-4 py-2 hover:cursor-pointer"
           ></textarea>
         </div>
         <div class="mb-10 flex items-center gap-x-5">
-          <input type="checkbox" id="consent" name="consent" class="size-5" />
+          <input
+            type="checkbox"
+            id="consent"
+            name="consent"
+            class="border-theme-grey-medium size-5"
+          />
           <label for="consent">I consent to being contacted by the team</label>
         </div>
         <button
@@ -82,4 +90,21 @@ import MainLayout from "@/layouts/MainLayout.astro";
   </main>
 </MainLayout>
 
-<script></script>
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const radioButtons: NodeListOf<HTMLElement> = document.querySelectorAll("input[type='radio']");
+    radioButtons.forEach((radioButton) => {
+      radioButton.addEventListener("click", (event) => {
+        const target = event.target as HTMLElement;
+        if (target) {
+          document
+            .getElementById(target.id)
+            ?.parentElement?.classList.toggle("bg-theme-green-lighter");
+          document
+            .getElementById(target.id)
+            ?.parentElement?.classList.toggle("border-theme-green-medium");
+        }
+      });
+    });
+  });
+</script>
