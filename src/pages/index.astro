@@ -13,7 +13,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
             type="text"
             id="first-name"
             name="first-name"
-            class="border-theme-green-medium mb-6 rounded-lg border-1 p-3"
+            class="border-theme-green-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer"
           />
         </div>
         <div class="flex flex-col">
@@ -22,7 +22,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
             type="text"
             id="last-name"
             name="last-name"
-            class="border-theme-green-medium mb-6 rounded-lg border-1 p-3"
+            class="border-theme-green-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer"
           />
         </div>
         <div class="flex flex-col">
@@ -31,7 +31,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
             type="text"
             id="email-address"
             name="email-address"
-            class="border-theme-green-medium mb-6 rounded-lg border-1 p-3"
+            class="border-theme-green-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer"
           />
         </div>
         <fieldset id="query-type" class="mb-7 flex flex-col items-start gap-4">
@@ -44,7 +44,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
               id="general-inquiry"
               name="type"
               value="general-inquiry"
-              class="size-5 appearance-none rounded-full border-2 border-gray-300 checked:border-green-500 checked:bg-green-500"
+              class="checked:bg-theme-green-medium checked:border-theme-green-medium size-5 appearance-none rounded-full border-2 border-gray-300 hover:cursor-pointer"
             />
             <label for="general-inquiry" class="text-lg">General Inquiry</label>
           </div>
@@ -56,7 +56,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
               id="support-request"
               name="type"
               value="support-request"
-              class="size-5 appearance-none rounded-full border-2 border-gray-300 checked:border-green-500 checked:bg-green-500"
+              class="checked:bg-theme-green-medium checked:border-theme-green-medium size-5 appearance-none rounded-full border-2 border-gray-300 hover:cursor-pointer"
             />
             <label for="support-request" class="text-lg">Support Request</label>
           </div>
@@ -66,16 +66,20 @@ import MainLayout from "@/layouts/MainLayout.astro";
           <textarea
             name="message"
             id="message"
-            class="border-theme-green-medium mb-8 h-60 resize-none rounded-lg border-1"></textarea>
+            class="border-theme-green-medium mb-8 h-60 resize-none rounded-lg border-1 px-4 py-2 hover:cursor-pointer"
+          ></textarea>
         </div>
         <div class="mb-10 flex items-center gap-x-5">
           <input type="checkbox" id="consent" name="consent" class="size-5" />
           <label for="consent">I consent to being contacted by the team</label>
         </div>
-        <button class="bg-theme-green-medium text-theme-white w-full rounded-lg py-4 text-lg"
+        <button
+          class="bg-theme-green-medium text-theme-white hover:bg-theme-grey-darker w-full rounded-lg py-4 text-lg hover:cursor-pointer"
           >Submit</button
         >
       </form>
     </div>
   </main>
 </MainLayout>
+
+<script></script>
