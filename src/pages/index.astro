@@ -130,12 +130,8 @@ import MainLayout from "@/layouts/MainLayout.astro";
         const parentElement = document.getElementById(radioButton.id)?.parentElement?.parentElement;
         if (radioButton.id === id) {
           parentElement?.classList.add("bg-theme-green-lighter");
-          // parentElement?.classList.add("border-theme-green-medium");
-          // parentElement?.classList.remove("border-theme-grey-medium");
         } else {
           parentElement?.classList.remove("bg-theme-green-lighter");
-          // parentElement?.classList.remove("border-theme-green-medium");
-          // parentElement?.classList.add("border-theme-grey-medium");
         }
       });
     };
