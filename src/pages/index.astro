@@ -127,11 +127,11 @@ import MainLayout from "@/layouts/MainLayout.astro";
 
     const handleClick = (id: string) => {
       radioButtons.forEach((radioButton) => {
-        const parentElement = document.getElementById(radioButton.id)?.parentElement?.parentElement;
+        const inquiryDiv = document.getElementById(radioButton.id)?.parentElement?.parentElement;
         if (radioButton.id === id) {
-          parentElement?.classList.add("bg-theme-green-lighter");
+          inquiryDiv?.classList.add("bg-theme-green-lighter");
         } else {
-          parentElement?.classList.remove("bg-theme-green-lighter");
+          inquiryDiv?.classList.remove("bg-theme-green-lighter");
         }
       });
     };
