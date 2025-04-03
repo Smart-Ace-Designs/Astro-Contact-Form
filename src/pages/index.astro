@@ -48,32 +48,47 @@ import MainLayout from "@/layouts/MainLayout.astro";
         </div>
         <fieldset id="query-type" class="mb-7 flex flex-col items-start gap-4">
           <legend class="mb-4">Query Type <span class="text-theme-green-medium">*</span></legend>
-          <div
-            class="border-theme-grey-medium bg-theme-green-lighter flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
-          >
-            <input
-              type="radio"
-              id="general-inquiry"
-              name="type"
-              value="general-inquiry"
-              class="checked:bg-theme-green-medium checked:border-theme-green-medium size-5 appearance-none rounded-full border-2 border-gray-300 hover:cursor-pointer"
-              checked
-            />
-            <label for="general-inquiry" class="text-lg">General Inquiry</label>
-          </div>
+
           <div
             class="border-theme-grey-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
           >
-            <input
-              type="radio"
-              id="support-request"
-              name="type"
-              value="support-request"
-              class="checked:bg-theme-green-medium checked:border-theme-green-medium size-5 appearance-none rounded-full border-2 border-gray-300 hover:cursor-pointer"
-            />
+            <div class="relative inline-block">
+              <input
+                type="radio"
+                id="general-inquiry"
+                name="type"
+                value="general-inquiry"
+                class="peer absolute opacity-0"
+                required
+              />
+              <label
+                for="general-inquiry"
+                class="block h-5 w-5 cursor-pointer rounded-full border-2 border-gray-300 peer-checked:border-none peer-checked:bg-[url('/icon-radio-selected.svg')] peer-checked:bg-cover peer-checked:bg-center"
+              ></label>
+            </div>
+            <label for="general-inquiry" class="text-lg">General Inquiry</label>
+          </div>
+
+          <div
+            class="border-theme-grey-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
+          >
+            <div class="relative inline-block">
+              <input
+                type="radio"
+                id="support-request"
+                name="type"
+                value="support-request"
+                class="peer absolute opacity-0"
+              />
+              <label
+                for="support-request"
+                class="block h-5 w-5 cursor-pointer rounded-full border-2 border-gray-300 peer-checked:border-none peer-checked:bg-[url('/icon-radio-selected.svg')] peer-checked:bg-cover peer-checked:bg-center"
+              ></label>
+            </div>
             <label for="support-request" class="text-lg">Support Request</label>
           </div>
         </fieldset>
+
         <div class="flex flex-col">
           <label for="message" class="mb-2"
             >Message <span class="text-theme-green-medium">*</span></label
@@ -112,15 +127,15 @@ import MainLayout from "@/layouts/MainLayout.astro";
 
     const handleClick = (id: string) => {
       radioButtons.forEach((radioButton) => {
-        const parentElement = document.getElementById(radioButton.id)?.parentElement;
+        const parentElement = document.getElementById(radioButton.id)?.parentElement?.parentElement;
         if (radioButton.id === id) {
           parentElement?.classList.add("bg-theme-green-lighter");
-          parentElement?.classList.add("border-theme-green-medium");
-          parentElement?.classList.remove("border-theme-grey-medium");
+          // parentElement?.classList.add("border-theme-green-medium");
+          // parentElement?.classList.remove("border-theme-grey-medium");
         } else {
           parentElement?.classList.remove("bg-theme-green-lighter");
-          parentElement?.classList.remove("border-theme-green-medium");
-          parentElement?.classList.add("border-theme-grey-medium");
+          // parentElement?.classList.remove("border-theme-green-medium");
+          // parentElement?.classList.add("border-theme-grey-medium");
         }
       });
     };
