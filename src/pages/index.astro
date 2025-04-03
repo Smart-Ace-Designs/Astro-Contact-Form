@@ -8,39 +8,48 @@ import MainLayout from "@/layouts/MainLayout.astro";
       <h1 class="text-theme-grey-darker mb-8 text-3xl font-bold">Contact Us</h1>
       <form action="">
         <div class="flex flex-col">
-          <label for="first-name" class="mb-2">First Name</label>
+          <label for="first-name" class="mb-2"
+            >First Name <span class="text-theme-green-medium">*</span></label
+          >
           <input
             type="text"
             id="first-name"
             name="first-name"
             class="border-theme-grey-medium focus:border-theme-green-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
             autocomplete="given-name"
+            required
           />
         </div>
         <div class="flex flex-col">
-          <label for="last-name" class="mb-2">Last Name</label>
+          <label for="last-name" class="mb-2"
+            >Last Name <span class="text-theme-green-medium">*</span></label
+          >
           <input
             type="text"
             id="last-name"
             name="last-name"
             class="border-theme-grey-medium focus:border-theme-green-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
             autocomplete="family-name"
+            required
           />
         </div>
         <div class="flex flex-col">
-          <label for="email-address" class="mb-2">Email Address</label>
+          <label for="email-address" class="mb-2"
+            >Email Address <span class="text-theme-green-medium">*</span></label
+          >
           <input
             type="text"
             id="email-address"
             name="email-address"
             class="border-theme-grey-medium focus:border-theme-green-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
             autocomplete="email"
+            required
           />
         </div>
         <fieldset id="query-type" class="mb-7 flex flex-col items-start gap-4">
-          <legend class="mb-4">Query Type</legend>
+          <legend class="mb-4">Query Type <span class="text-theme-green-medium">*</span></legend>
           <div
-            class="border-theme-grey-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
+            class="border-theme-grey-medium bg-theme-green-lighter flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
           >
             <input
               type="radio"
@@ -48,6 +57,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
               name="type"
               value="general-inquiry"
               class="checked:bg-theme-green-medium checked:border-theme-green-medium size-5 appearance-none rounded-full border-2 border-gray-300 hover:cursor-pointer"
+              checked
             />
             <label for="general-inquiry" class="text-lg">General Inquiry</label>
           </div>
@@ -65,12 +75,14 @@ import MainLayout from "@/layouts/MainLayout.astro";
           </div>
         </fieldset>
         <div class="flex flex-col">
-          <label for="message" class="mb-2">Message</label>
+          <label for="message" class="mb-2"
+            >Message <span class="text-theme-green-medium">*</span></label
+          >
           <textarea
             name="message"
             id="message"
             class="border-theme-grey-medium focus:border-theme-green-medium mb-8 h-60 resize-none rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
-          ></textarea>
+            required></textarea>
         </div>
         <div class="mb-10 flex items-center gap-x-5">
           <input
@@ -78,8 +90,12 @@ import MainLayout from "@/layouts/MainLayout.astro";
             id="consent"
             name="consent"
             class="border-theme-grey-medium size-5"
+            required
           />
-          <label for="consent">I consent to being contacted by the team</label>
+          <label for="consent"
+            >I consent to being contacted by the team <span class="text-theme-green-medium">*</span
+            ></label
+          >
         </div>
         <button
           class="bg-theme-green-medium text-theme-white hover:bg-theme-grey-darker w-full rounded-lg py-4 text-lg hover:cursor-pointer"
