@@ -60,7 +60,7 @@ export const prerender = false;
           >
           <input
             transition:persist
-            type="text"
+            type="email"
             id="email-address"
             name="emailAddress"
             class="border-theme-grey-medium focus:border-theme-green-medium rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
@@ -141,7 +141,7 @@ export const prerender = false;
               type="checkbox"
               id="consent"
               name="consent"
-              class="border-theme-grey-medium size-5"
+              class="border-theme-grey-medium size-5 checked:h-4 checked:appearance-none checked:border-none checked:bg-[url('/icon-checkbox-check.svg')] checked:bg-center"
               aria-required="true"
             />
             <label for="consent"
@@ -164,11 +164,21 @@ export const prerender = false;
 
 <script>
   document.addEventListener("astro:page-load", () => {
+    // Form
     const form = document.querySelector("form") as HTMLFormElement;
     const successValue = form?.getAttribute("data-success");
     if (successValue === "true") form.reset();
 
+    // Radio Buttons
     const radioButtons: NodeListOf<HTMLElement> = document.querySelectorAll("input[type='radio']");
+
+    radioButtons.forEach((radioButton) => {
+      radioButton.addEventListener("click", (event) => {
+        const target: HTMLElement = event.target as HTMLElement;
+        handleRadioButtonClick(target.id);
+      });
+    });
+
     const handleRadioButtonClick = (id: string) => {
       radioButtons.forEach((radioButton) => {
         const inquiryDiv = document.getElementById(radioButton.id)?.parentElement?.parentElement;
@@ -179,12 +189,5 @@ export const prerender = false;
         }
       });
     };
-
-    radioButtons.forEach((radioButton) => {
-      radioButton.addEventListener("click", (event) => {
-        const target: HTMLElement = event.target as HTMLElement;
-        handleRadioButtonClick(target.id);
-      });
-    });
   });
 </script>
