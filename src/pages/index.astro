@@ -4,6 +4,7 @@ import { actions, isInputError } from "astro:actions";
 
 const result = Astro.getActionResult(actions.request);
 const inputErrors = isInputError(result?.error) ? result.error.fields : {};
+const success = result?.data === undefined ? false : result?.data && !result?.error;
 
 export const prerender = false;
 ---
@@ -12,7 +13,7 @@ export const prerender = false;
   <main class="bg-theme-green-lighter flex min-h-screen justify-center py-8">
     <div class="bg-theme-white min-h-screen max-w-85 rounded-2xl p-6">
       <h1 class="text-theme-grey-darker mb-8 text-3xl font-bold">Contact Us</h1>
-      <form method="post" action={actions.request}>
+      <form method="post" action={actions.request} data-success={success ? "true" : "false"}>
         <div class="mb-6 flex flex-col">
           <label for="first-name" class="mb-2"
             >First Name <span class="text-theme-green-medium">*</span></label
@@ -154,7 +155,7 @@ export const prerender = false;
 
         <button
           class="bg-theme-green-medium text-theme-white hover:bg-theme-grey-darker w-full rounded-lg py-4 text-lg hover:cursor-pointer"
-          >Submit</button
+          id="submit">Submit</button
         >
       </form>
     </div>
@@ -163,8 +164,11 @@ export const prerender = false;
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const radioButtons: NodeListOf<HTMLElement> = document.querySelectorAll("input[type='radio']");
+    const form = document.querySelector("form") as HTMLFormElement;
+    const successValue = form?.getAttribute("data-success");
+    if (successValue === "true") form.reset();
 
+    const radioButtons: NodeListOf<HTMLElement> = document.querySelectorAll("input[type='radio']");
     const handleClick = (id: string) => {
       radioButtons.forEach((radioButton) => {
         const inquiryDiv = document.getElementById(radioButton.id)?.parentElement?.parentElement;

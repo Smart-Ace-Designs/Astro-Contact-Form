@@ -28,7 +28,7 @@ export const server = {
         .transform((value) => value === "on"),
     }),
     handler: async (input) => {
-      return input;
+      return true;
     },
   }),
 };
