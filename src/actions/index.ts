@@ -18,12 +18,14 @@ export const server = {
       type: z.enum(["support-request", "general-inquiry"], {
         message: "Please select a query type",
       }),
-      message: z.string().min(1, { message: "This field is required" }),
+      message: z
+        .string({ message: "This field is required" })
+        .min(1, { message: "This field is required" }),
       consent: z
-        .boolean()
-        .refine((value) => value === true, {
+        .string({
           message: "To submit this form, please consent to being contacted",
-        }),
+        })
+        .transform((value) => value === "on"),
     }),
     handler: async (input) => {
       return input;

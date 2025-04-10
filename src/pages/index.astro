@@ -18,6 +18,7 @@ export const prerender = false;
             >First Name <span class="text-theme-green-medium">*</span></label
           >
           <input
+            transition:persist
             type="text"
             id="first-name"
             name="firstName"
@@ -37,6 +38,7 @@ export const prerender = false;
             >Last Name <span class="text-theme-green-medium">*</span></label
           >
           <input
+            transition:persist
             type="text"
             id="last-name"
             name="lastName"
@@ -56,6 +58,7 @@ export const prerender = false;
             >Email Address <span class="text-theme-green-medium">*</span></label
           >
           <input
+            transition:persist
             type="text"
             id="email-address"
             name="emailAddress"
@@ -70,7 +73,12 @@ export const prerender = false;
           }
         </div>
 
-        <fieldset id="query-type" class="mb-7 flex flex-col items-start gap-4" aria-required="true">
+        <fieldset
+          transition:persist
+          id="query-type"
+          class="mb-7 flex flex-col items-start gap-4"
+          aria-required="true"
+        >
           <legend class="mb-4">Query Type <span class="text-theme-green-medium">*</span></legend>
 
           <div
@@ -118,6 +126,7 @@ export const prerender = false;
             >Message <span class="text-theme-green-medium">*</span></label
           >
           <textarea
+            transition:persist
             name="message"
             id="message"
             class="border-theme-grey-medium focus:border-theme-green-medium mb-8 h-60 resize-none rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
@@ -126,6 +135,7 @@ export const prerender = false;
         </div>
         <div class="mb-10 flex items-center gap-x-5">
           <input
+            transition:persist
             type="checkbox"
             id="consent"
             name="consent"
