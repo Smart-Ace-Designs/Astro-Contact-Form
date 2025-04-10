@@ -169,7 +169,7 @@ export const prerender = false;
     if (successValue === "true") form.reset();
 
     const radioButtons: NodeListOf<HTMLElement> = document.querySelectorAll("input[type='radio']");
-    const handleClick = (id: string) => {
+    const handleRadioButtonClick = (id: string) => {
       radioButtons.forEach((radioButton) => {
         const inquiryDiv = document.getElementById(radioButton.id)?.parentElement?.parentElement;
         if (radioButton.id === id) {
@@ -183,7 +183,7 @@ export const prerender = false;
     radioButtons.forEach((radioButton) => {
       radioButton.addEventListener("click", (event) => {
         const target: HTMLElement = event.target as HTMLElement;
-        handleClick(target.id);
+        handleRadioButtonClick(target.id);
       });
     });
   });
