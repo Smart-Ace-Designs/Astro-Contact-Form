@@ -1,52 +1,68 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import { actions, isInputError } from "astro:actions";
+
+const result = Astro.getActionResult(actions.request);
+const inputErrors = isInputError(result?.error) ? result.error.fields : {};
+
+export const prerender = false;
 ---
 
 <MainLayout title="Frontend Mentor | Contact Form">
   <main class="bg-theme-green-lighter flex min-h-screen justify-center py-8">
     <div class="bg-theme-white min-h-screen max-w-85 rounded-2xl p-6">
       <h1 class="text-theme-grey-darker mb-8 text-3xl font-bold">Contact Us</h1>
-      <form action="">
-        <div class="flex flex-col">
+      <form method="post" action={actions.request}>
+        <div class="mb-6 flex flex-col">
           <label for="first-name" class="mb-2"
             >First Name <span class="text-theme-green-medium">*</span></label
           >
           <input
             type="text"
             id="first-name"
-            name="first-name"
-            class="border-theme-grey-medium focus:border-theme-green-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
+            name="firstName"
+            class="border-theme-grey-medium focus:border-theme-green-medium rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
             autocomplete="given-name"
-            required
+            aria-required="true"
           />
+          {inputErrors.firstName && <p class="text-theme-red text-sm">{inputErrors.firstName}</p>}
         </div>
-        <div class="flex flex-col">
+
+        <div class="mb-6 flex flex-col">
           <label for="last-name" class="mb-2"
             >Last Name <span class="text-theme-green-medium">*</span></label
           >
           <input
             type="text"
             id="last-name"
-            name="last-name"
-            class="border-theme-grey-medium focus:border-theme-green-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
+            name="lastName"
+            class="border-theme-grey-medium focus:border-theme-green-medium rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
             autocomplete="family-name"
-            required
+            aria-required="true"
           />
+          {inputErrors.lastName && <p class="text-theme-red text-sm">{inputErrors.lastName}</p>}
         </div>
-        <div class="flex flex-col">
+
+        <div class="mb-6 flex flex-col">
           <label for="email-address" class="mb-2"
             >Email Address <span class="text-theme-green-medium">*</span></label
           >
           <input
             type="text"
             id="email-address"
-            name="email-address"
-            class="border-theme-grey-medium focus:border-theme-green-medium mb-6 rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
+            name="emailAddress"
+            class="border-theme-grey-medium focus:border-theme-green-medium rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
             autocomplete="email"
-            required
+            aria-required="true"
           />
+          {
+            inputErrors.emailAddress && (
+              <p class="text-theme-red text-sm">{inputErrors.emailAddress}</p>
+            )
+          }
         </div>
-        <fieldset id="query-type" class="mb-7 flex flex-col items-start gap-4">
+
+        <fieldset id="query-type" class="mb-7 flex flex-col items-start gap-4" aria-required="true">
           <legend class="mb-4">Query Type <span class="text-theme-green-medium">*</span></legend>
 
           <div
@@ -59,7 +75,6 @@ import MainLayout from "@/layouts/MainLayout.astro";
                 name="type"
                 value="general-inquiry"
                 class="peer absolute opacity-0"
-                required
               />
               <label
                 for="general-inquiry"
@@ -97,7 +112,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
             name="message"
             id="message"
             class="border-theme-grey-medium focus:border-theme-green-medium mb-8 h-60 resize-none rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
-            required></textarea>
+            aria-required="true"></textarea>
         </div>
         <div class="mb-10 flex items-center gap-x-5">
           <input
@@ -105,7 +120,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
             id="consent"
             name="consent"
             class="border-theme-grey-medium size-5"
-            required
+            aria-required="true"
           />
           <label for="consent"
             >I consent to being contacted by the team <span class="text-theme-green-medium">*</span
