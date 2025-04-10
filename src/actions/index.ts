@@ -6,22 +6,24 @@ export const server = {
     accept: "form",
     input: z.object({
       firstName: z
-        .string({ message: "First name is required" })
-        .min(1, { message: "First name is required" }),
+        .string({ message: "This field is required" })
+        .min(1, { message: "This field is required" }),
       lastName: z
-        .string({ message: "Last name is required" })
-        .min(1, { message: "Last name is required" }),
+        .string({ message: "This field is required" })
+        .min(1, { message: "This field is required" }),
       emailAddress: z
-        .string({ message: "Email address is required" })
-        .min(1, { message: "Email address is required" })
+        .string({ message: "Please enter a valid email address" })
+        .min(1, { message: "Please enter a valid email address" })
         .email({ message: "A valid email address name is required" }),
       type: z.enum(["support-request", "general-inquiry"], {
-        message: "Please select a request type",
+        message: "Please select a query type",
       }),
-      message: z.string().min(1, { message: "Message text is required" }),
+      message: z.string().min(1, { message: "This field is required" }),
       consent: z
         .boolean()
-        .refine((value) => value === true, { message: "Please consent to be contacted" }),
+        .refine((value) => value === true, {
+          message: "To submit this form, please consent to being contacted",
+        }),
     }),
     handler: async (input) => {
       return input;

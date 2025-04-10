@@ -25,7 +25,11 @@ export const prerender = false;
             autocomplete="given-name"
             aria-required="true"
           />
-          {inputErrors.firstName && <p class="text-theme-red text-sm">{inputErrors.firstName}</p>}
+          {
+            inputErrors.firstName && (
+              <p class="text-theme-red mt-2 text-sm">{inputErrors.firstName}</p>
+            )
+          }
         </div>
 
         <div class="mb-6 flex flex-col">
@@ -40,7 +44,11 @@ export const prerender = false;
             autocomplete="family-name"
             aria-required="true"
           />
-          {inputErrors.lastName && <p class="text-theme-red text-sm">{inputErrors.lastName}</p>}
+          {
+            inputErrors.lastName && (
+              <p class="text-theme-red mt-2 text-sm">{inputErrors.lastName}</p>
+            )
+          }
         </div>
 
         <div class="mb-6 flex flex-col">
@@ -57,7 +65,7 @@ export const prerender = false;
           />
           {
             inputErrors.emailAddress && (
-              <p class="text-theme-red text-sm">{inputErrors.emailAddress}</p>
+              <p class="text-theme-red mt-2 text-sm">{inputErrors.emailAddress}</p>
             )
           }
         </div>
@@ -103,6 +111,7 @@ export const prerender = false;
             <label for="support-request" class="text-lg">Support Request</label>
           </div>
         </fieldset>
+        {inputErrors.type && <p class="text-theme-red text-sm">{inputErrors.type}</p>}
 
         <div class="flex flex-col">
           <label for="message" class="mb-2"
@@ -113,6 +122,7 @@ export const prerender = false;
             id="message"
             class="border-theme-grey-medium focus:border-theme-green-medium mb-8 h-60 resize-none rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
             aria-required="true"></textarea>
+          {inputErrors.message && <p class="text-theme-red text-sm">{inputErrors.message}</p>}
         </div>
         <div class="mb-10 flex items-center gap-x-5">
           <input
@@ -127,6 +137,7 @@ export const prerender = false;
             ></label
           >
         </div>
+        {inputErrors.consent && <p class="text-theme-red text-sm">{inputErrors.consent}</p>}
         <button
           class="bg-theme-green-medium text-theme-white hover:bg-theme-grey-darker w-full rounded-lg py-4 text-lg hover:cursor-pointer"
           >Submit</button
