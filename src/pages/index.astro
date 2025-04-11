@@ -80,8 +80,12 @@ export const prerender = false;
             id="query-type"
             class="flex flex-col items-start gap-4"
             aria-required="true"
+            aria-describedby="query-type-help"
           >
             <legend class="mb-4">Query Type <span class="text-theme-green-medium">*</span></legend>
+            <p id="query-type-help" class="sr-only">
+              Choose an option. Use arrow keys to navigate.
+            </p>
             <div
               class="border-theme-grey-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
             >
@@ -164,13 +168,17 @@ export const prerender = false;
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    // Form
+    const radioButtons: NodeListOf<HTMLElement> = document.querySelectorAll("input[type='radio']");
+
     const form = document.querySelector("form") as HTMLFormElement;
     const successValue = form?.getAttribute("data-success");
-    if (successValue === "true") form.reset();
-
-    // Radio Buttons
-    const radioButtons: NodeListOf<HTMLElement> = document.querySelectorAll("input[type='radio']");
+    if (successValue === "true") {
+      radioButtons.forEach((radioButton) => {
+        const inquiryDiv = document.getElementById(radioButton.id)?.parentElement?.parentElement;
+        inquiryDiv?.classList.remove("bg-theme-green-lighter");
+      });
+      form.reset();
+    }
 
     radioButtons.forEach((radioButton) => {
       radioButton.addEventListener("click", (event) => {
@@ -189,5 +197,18 @@ export const prerender = false;
         }
       });
     };
+
+    const fieldset = document.getElementById("query-type") as HTMLElement;
+    const firstRadioButton = document.getElementById("general-inquiry") as HTMLInputElement;
+    fieldset.addEventListener(
+      "focus",
+      () => {
+        const inquiryDiv = document.getElementById(firstRadioButton.id)?.parentElement
+          ?.parentElement;
+        inquiryDiv?.classList.add("bg-theme-green-lighter");
+        firstRadioButton.checked = true;
+      },
+      true,
+    );
   });
 </script>
