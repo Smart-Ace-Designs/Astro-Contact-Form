@@ -1,6 +1,7 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import { actions, isInputError } from "astro:actions";
+import TextInput from "@/components/TextInput.astro";
 
 const result = Astro.getActionResult(actions.request);
 const inputErrors = isInputError(result?.error) ? result.error.fields : {};
@@ -15,18 +16,7 @@ export const prerender = false;
       <h1 class="text-theme-grey-darker mb-8 text-3xl font-bold">Contact Us</h1>
       <form method="post" action={actions.request} data-success={success ? "true" : "false"}>
         <div class="mb-6 flex flex-col">
-          <label for="first-name" class="mb-2"
-            >First Name <span class="text-theme-green-medium">*</span></label
-          >
-          <input
-            transition:persist
-            type="text"
-            id="first-name"
-            name="firstName"
-            class="border-theme-grey-medium focus:border-theme-green-medium rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
-            autocomplete="given-name"
-            aria-required="true"
-          />
+          <TextInput name="firstName" autocomplete="given-name">First Name</TextInput>
           {
             inputErrors.firstName && (
               <p class="text-theme-red mt-2 text-sm">{inputErrors.firstName}</p>
@@ -35,18 +25,7 @@ export const prerender = false;
         </div>
 
         <div class="mb-6 flex flex-col">
-          <label for="last-name" class="mb-2"
-            >Last Name <span class="text-theme-green-medium">*</span></label
-          >
-          <input
-            transition:persist
-            type="text"
-            id="last-name"
-            name="lastName"
-            class="border-theme-grey-medium focus:border-theme-green-medium rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
-            autocomplete="family-name"
-            aria-required="true"
-          />
+          <TextInput name="lastName" autocomplete="family-name">Last Name</TextInput>
           {
             inputErrors.lastName && (
               <p class="text-theme-red mt-2 text-sm">{inputErrors.lastName}</p>
@@ -55,18 +34,7 @@ export const prerender = false;
         </div>
 
         <div class="mb-6 flex flex-col">
-          <label for="email-address" class="mb-2"
-            >Email Address <span class="text-theme-green-medium">*</span></label
-          >
-          <input
-            transition:persist
-            type="email"
-            id="email-address"
-            name="emailAddress"
-            class="border-theme-grey-medium focus:border-theme-green-medium rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
-            autocomplete="email"
-            aria-required="true"
-          />
+          <TextInput name="emailAddress" autocomplete="email">Email Address</TextInput>
           {
             inputErrors.emailAddress && (
               <p class="text-theme-red mt-2 text-sm">{inputErrors.emailAddress}</p>

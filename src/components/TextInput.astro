@@ -1,0 +1,34 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"input"> {
+  name: string;
+}
+
+const { name, ...rest } = Astro.props;
+
+const slugify = (text: string) => {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "")
+    .replace(/--+/g, "-")
+    .replace(/^-+|-+$/g, "");
+};
+---
+
+<label for={slugify(name)} class="mb-2">
+  <slot />
+  <span class="text-theme-green-medium">*</span>
+</label>
+
+<input
+  transition:persist
+  type="text"
+  id={slugify(name)}
+  name={name}
+  class="border-theme-grey-medium focus:border-theme-green-medium rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none"
+  aria-required="true"
+  {...rest}
+/>
