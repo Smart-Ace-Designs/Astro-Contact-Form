@@ -2,6 +2,7 @@
 import MainLayout from "@/layouts/MainLayout.astro";
 import { actions, isInputError } from "astro:actions";
 import TextInput from "@/components/TextInput.astro";
+import QueryTypeInput from "@/components/QueryTypeInput.astro";
 
 const result = Astro.getActionResult(actions.request);
 const inputErrors = isInputError(result?.error) ? result.error.fields : {};
@@ -54,42 +55,8 @@ export const prerender = false;
             <p id="query-type-help" class="sr-only">
               Choose an option. Use arrow keys to navigate.
             </p>
-            <div
-              class="border-theme-grey-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
-            >
-              <div class="relative inline-block">
-                <input
-                  type="radio"
-                  id="general-inquiry"
-                  name="type"
-                  value="general-inquiry"
-                  class="peer absolute opacity-0"
-                />
-                <label
-                  for="general-inquiry"
-                  class="block h-5 w-5 cursor-pointer rounded-full border-2 border-gray-300 peer-checked:border-none peer-checked:bg-[url('/icon-radio-selected.svg')] peer-checked:bg-cover peer-checked:bg-center"
-                ></label>
-              </div>
-              <label for="general-inquiry" class="text-lg">General Inquiry</label>
-            </div>
-            <div
-              class="border-theme-grey-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
-            >
-              <div class="relative inline-block">
-                <input
-                  type="radio"
-                  id="support-request"
-                  name="type"
-                  value="support-request"
-                  class="peer absolute opacity-0"
-                />
-                <label
-                  for="support-request"
-                  class="block h-5 w-5 cursor-pointer rounded-full border-2 border-gray-300 peer-checked:border-none peer-checked:bg-[url('/icon-radio-selected.svg')] peer-checked:bg-cover peer-checked:bg-center"
-                ></label>
-              </div>
-              <label for="support-request" class="text-lg">Support Request</label>
-            </div>
+            <QueryTypeInput uid="general-inquiry" name="type">General Inquiry</QueryTypeInput>
+            <QueryTypeInput uid="support-request" name="type">Support Request</QueryTypeInput>
           </fieldset>
           {inputErrors.type && <p class="text-theme-red mt-2 text-sm">{inputErrors.type}</p>}
         </div>

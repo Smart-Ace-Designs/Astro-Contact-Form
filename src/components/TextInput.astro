@@ -1,21 +1,12 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import { slugify } from "@/lib/utils";
 
 interface Props extends HTMLAttributes<"input"> {
   name: string;
 }
 
 const { name, ...rest } = Astro.props;
-
-const slugify = (text: string) => {
-  return text
-    .toString()
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^\w-]+/g, "")
-    .replace(/--+/g, "-")
-    .replace(/^-+|-+$/g, "");
-};
 ---
 
 <label for={slugify(name)} class="mb-2">
