@@ -16,31 +16,31 @@ export const prerender = false;
     <div class="bg-theme-white min-h-screen w-85 rounded-2xl p-6 sm:w-xl md:w-2xl lg:w-[720px]">
       <h1 class="text-theme-grey-darker mb-8 text-3xl font-bold">Contact Us</h1>
       <form method="post" action={actions.request} data-success={success ? "true" : "false"}>
-        <div class="mb-6 flex flex-col">
-          <TextInput name="firstName" autocomplete="given-name">First Name</TextInput>
-          {
-            inputErrors.firstName && (
-              <p class="text-theme-red mt-2 text-sm">{inputErrors.firstName}</p>
-            )
-          }
-        </div>
-
-        <div class="mb-6 flex flex-col">
-          <TextInput name="lastName" autocomplete="family-name">Last Name</TextInput>
-          {
-            inputErrors.lastName && (
-              <p class="text-theme-red mt-2 text-sm">{inputErrors.lastName}</p>
-            )
-          }
-        </div>
-
-        <div class="mb-6 flex flex-col">
-          <TextInput name="emailAddress" autocomplete="email">Email Address</TextInput>
-          {
-            inputErrors.emailAddress && (
-              <p class="text-theme-red mt-2 text-sm">{inputErrors.emailAddress}</p>
-            )
-          }
+        <div class="sm:grid sm:grid-cols-2 sm:gap-x-8">
+          <div class="mb-6 flex flex-col">
+            <TextInput name="firstName" autocomplete="given-name">First Name</TextInput>
+            {
+              inputErrors.firstName && (
+                <p class="text-theme-red mt-2 text-sm">{inputErrors.firstName}</p>
+              )
+            }
+          </div>
+          <div class="mb-6 flex flex-col">
+            <TextInput name="lastName" autocomplete="family-name">Last Name</TextInput>
+            {
+              inputErrors.lastName && (
+                <p class="text-theme-red mt-2 text-sm">{inputErrors.lastName}</p>
+              )
+            }
+          </div>
+          <div class="mb-6 flex flex-col sm:col-span-2">
+            <TextInput name="emailAddress" autocomplete="email">Email Address</TextInput>
+            {
+              inputErrors.emailAddress && (
+                <p class="text-theme-red mt-2 text-sm">{inputErrors.emailAddress}</p>
+              )
+            }
+          </div>
         </div>
 
         <div class="mb-7">
