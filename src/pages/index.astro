@@ -12,8 +12,8 @@ export const prerender = false;
 ---
 
 <MainLayout title="Frontend Mentor | Contact Form">
-  <main class="bg-theme-green-lighter flex min-h-screen justify-center px-4 py-8 sm:pt-32">
-    <div class="bg-theme-white w-85 rounded-2xl p-6 sm:w-xl md:w-2xl lg:w-[720px]">
+  <main class="bg-theme-green-lighter flex min-h-screen justify-center px-4 py-8 sm:pt-31">
+    <div class="bg-theme-white w-85 rounded-2xl p-6 sm:w-xl sm:p-9 md:w-2xl lg:w-[720px]">
       <h1 class="text-theme-grey-darker mb-8 text-3xl font-bold">Contact Us</h1>
       <form method="post" action={actions.request} data-success={success ? "true" : "false"}>
         <div class="sm:grid sm:grid-cols-2 sm:gap-x-4">
@@ -69,7 +69,7 @@ export const prerender = false;
             transition:persist
             name="message"
             id="message"
-            class="border-theme-grey-medium focus:border-theme-green-medium h-60 resize-none rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none sm:h-28"
+            class="border-theme-grey-medium focus:border-theme-green-medium h-60 resize-none rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none sm:h-24"
             aria-required="true"></textarea>
           {inputErrors.message && <p class="text-theme-red mt-2 text-sm">{inputErrors.message}</p>}
         </div>
@@ -80,7 +80,7 @@ export const prerender = false;
               type="checkbox"
               id="consent"
               name="consent"
-              class="border-theme-grey-medium size-5 checked:h-4 checked:appearance-none checked:border-none checked:bg-[url('/icon-checkbox-check.svg')] checked:bg-center"
+              class="border-theme-grey-medium size-5 checked:h-4 checked:appearance-none checked:border-none checked:bg-[url('/icon-checkbox-check.svg')] checked:bg-center sm:size-4"
               aria-required="true"
             />
             <label for="consent"
