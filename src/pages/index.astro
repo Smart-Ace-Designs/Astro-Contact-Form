@@ -1,8 +1,8 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import { actions, isInputError } from "astro:actions";
-import TextInput from "@/components/TextInput.astro";
-import QueryTypeInput from "@/components/QueryTypeInput.astro";
+import PII from "@/components/PII.astro";
+import QueryType from "@/components/QueryType.astro";
 
 const result = Astro.getActionResult(actions.request);
 const inputErrors = isInputError(result?.error) ? result.error.fields : {};
@@ -18,7 +18,7 @@ export const prerender = false;
       <form method="post" action={actions.request} data-success={success ? "true" : "false"}>
         <div class="sm:grid sm:grid-cols-2 sm:gap-x-4">
           <div class="mb-6 flex flex-col">
-            <TextInput name="firstName" autocomplete="given-name">First Name</TextInput>
+            <PII name="firstName" autocomplete="given-name">First Name</PII>
             {
               inputErrors.firstName && (
                 <p class="text-theme-red mt-2 text-sm">{inputErrors.firstName}</p>
@@ -26,7 +26,7 @@ export const prerender = false;
             }
           </div>
           <div class="mb-6 flex flex-col">
-            <TextInput name="lastName" autocomplete="family-name">Last Name</TextInput>
+            <PII name="lastName" autocomplete="family-name">Last Name</PII>
             {
               inputErrors.lastName && (
                 <p class="text-theme-red mt-2 text-sm">{inputErrors.lastName}</p>
@@ -34,7 +34,7 @@ export const prerender = false;
             }
           </div>
           <div class="mb-6 flex flex-col sm:col-span-2">
-            <TextInput name="emailAddress" autocomplete="email">Email Address</TextInput>
+            <PII name="emailAddress" autocomplete="email">Email Address</PII>
             {
               inputErrors.emailAddress && (
                 <p class="text-theme-red mt-2 text-sm">{inputErrors.emailAddress}</p>
@@ -55,8 +55,8 @@ export const prerender = false;
             <p id="query-type-help" class="sr-only">
               Choose an option. Use arrow keys to navigate.
             </p>
-            <QueryTypeInput uid="general-inquiry" name="type">General Inquiry</QueryTypeInput>
-            <QueryTypeInput uid="support-request" name="type">Support Request</QueryTypeInput>
+            <QueryType uid="general-inquiry" name="type">General Inquiry</QueryType>
+            <QueryType uid="support-request" name="type">Support Request</QueryType>
           </fieldset>
           {inputErrors.type && <p class="text-theme-red mt-2 text-sm">{inputErrors.type}</p>}
         </div>
