@@ -28,11 +28,12 @@ Users should be able to:
 - See hover and focus states for all interactive elements on the page
 
 ### Screenshot
+![Screenshot 2025-04-24 145217](https://github.com/user-attachments/assets/a9a884b1-4c1e-4f20-b05b-9bd3c8d48dc3)
 
 ### Links
 
-- Solution URL: [GitHub]()
-- Live Site URL: [Netlify]()
+- Solution URL: [GitHub](https://github.com/Smart-Ace-Designs/Astro-Contact-Form)
+- Live Site URL: [Netlify](https://smartacedesigns-astro-contactform.netlify.app/)
 
 ## My process
 
@@ -43,6 +44,7 @@ Users should be able to:
 - Tailwind CSS v4
 - Mobile-first workflow
 - CSS Grid
+- CSS Flex
 - Bun
 
 ## Author
