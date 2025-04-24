@@ -12,7 +12,23 @@ export const prerender = false;
 ---
 
 <MainLayout title="Frontend Mentor | Contact Form">
-  <main class="bg-theme-green-lighter flex min-h-screen justify-center px-4 py-8 sm:pt-31">
+  <main class="bg-theme-green-lighter relative flex min-h-screen justify-center px-4 py-8 sm:pt-31">
+    <!-- Success Message -->
+    <div
+      class="bg-theme-grey-darker text-theme-white absolute top-2 hidden rounded-xl p-6 sm:top-6"
+      id="success"
+      aria-hidden="true"
+    >
+      <div class="mb-2 flex flex-row gap-x-2">
+        <img src="/icon-success-check.svg" alt="Success!" />
+        <h2 class="text-theme-green-lighter text-lg">Message Sent!</h2>
+      </div>
+      <p class="text-theme-green-lighter text-[15px] font-extralight">
+        Thanks for completeting the form. We'll be in touch soon!
+      </p>
+    </div>
+
+    <!-- Form -->
     <div class="bg-theme-white w-85 rounded-2xl p-6 sm:w-xl sm:p-9 md:w-2xl lg:w-[720px]">
       <h1 class="text-theme-grey-darker mb-8 text-3xl font-bold">Contact Us</h1>
       <form method="post" action={actions.request} data-success={success ? "true" : "false"}>
@@ -112,6 +128,12 @@ export const prerender = false;
         const inquiryDiv = document.getElementById(radioButton.id)?.parentElement?.parentElement;
         inquiryDiv?.classList.remove("bg-theme-green-lighter");
       });
+      const successDiv = document.getElementById("success");
+      if (successDiv) {
+        successDiv.classList.remove("hidden");
+        successDiv.removeAttribute("aria-hidden");
+        successDiv.setAttribute("aria-live", "polite");
+      }
       form.reset();
     }
 
