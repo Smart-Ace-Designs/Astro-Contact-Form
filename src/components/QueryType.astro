@@ -9,23 +9,23 @@ interface Props extends HTMLAttributes<"input"> {
 const { uid, ...rest } = Astro.props;
 ---
 
-<div
-  class="border-theme-grey-medium flex w-full items-center gap-4 rounded-lg border-1 px-6 py-2.5"
+<label
+  for={slugify(uid)}
+  class="border-theme-grey-medium flex w-full cursor-pointer items-center gap-4 rounded-lg border-1 px-6 py-2.5"
 >
   <div class="relative inline-block">
     <input
       type="radio"
       id={slugify(uid)}
       value={slugify(uid)}
-      class="peer absolute opacity-0"
+      class="peer absolute cursor-pointer opacity-0"
       {...rest}
     />
-    <label
-      for={slugify(uid)}
-      class="block h-5 w-5 cursor-pointer rounded-full border-2 border-gray-300 peer-checked:border-none peer-checked:bg-[url('/icon-radio-selected.svg')] peer-checked:bg-cover peer-checked:bg-center"
-    ></label>
+    <span
+      class="block h-5 w-5 rounded-full border-2 border-gray-300 peer-checked:border-none peer-checked:bg-[url('/icon-radio-selected.svg')] peer-checked:bg-cover peer-checked:bg-center"
+    ></span>
   </div>
-  <label for={slugify(uid)} class="text-lg">
+  <span class="text-lg">
     <slot />
-  </label>
-</div>
+  </span>
+</label>
