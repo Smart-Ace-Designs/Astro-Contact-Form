@@ -73,7 +73,13 @@ export const prerender = false;
             <QueryType uid="general-inquiry" name="type">General Inquiry</QueryType>
             <QueryType uid="support-request" name="type">Support Request</QueryType>
           </fieldset>
-          {inputErrors.type && <p class="text-theme-red mt-2 text-sm">{inputErrors.type}</p>}
+          {
+            inputErrors.type && (
+              <p class="text-theme-red mt-2 text-sm" id="query-type-error">
+                {inputErrors.type}
+              </p>
+            )
+          }
         </div>
 
         <div class="mb-8 flex flex-col">
@@ -118,9 +124,15 @@ export const prerender = false;
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const radioButtons: NodeListOf<HTMLElement> = document.querySelectorAll("input[type='radio']");
-
+    // Elements
     const form = document.querySelector("form") as HTMLFormElement;
+    const piiInputs = document.querySelectorAll("input[type='text']");
+    const fieldset = document.getElementById("query-type") as HTMLElement;
+    const radioButtons: NodeListOf<HTMLElement> = document.querySelectorAll("input[type='radio']");
+    const textarea = document.getElementById("message") as HTMLTextAreaElement;
+    const consentInput = document.getElementById("consent") as HTMLInputElement;
+
+    // Handle successful form submission
     const successValue = form?.getAttribute("data-success");
     if (successValue === "true") {
       radioButtons.forEach((radioButton) => {
@@ -136,13 +148,7 @@ export const prerender = false;
       form.reset();
     }
 
-    radioButtons.forEach((radioButton) => {
-      radioButton.addEventListener("click", (event) => {
-        const target: HTMLElement = event.target as HTMLElement;
-        handleRadioButtonClick(target.id);
-      });
-    });
-
+    // Set background color of the selected radio button when clicked and remove background color of the other radio buttons
     const handleRadioButtonClick = (id: string) => {
       radioButtons.forEach((radioButton) => {
         const inquiryDiv = document.getElementById(radioButton.id)?.parentElement?.parentElement;
@@ -154,7 +160,47 @@ export const prerender = false;
       });
     };
 
-    const fieldset = document.getElementById("query-type") as HTMLElement;
+    // Remove error message for PII inputs when they receive value
+    piiInputs.forEach((input) => {
+      input.addEventListener("input", () => {
+        const errorElement = input.parentElement?.querySelector("p");
+        if (errorElement) {
+          errorElement.classList.add("hidden");
+        }
+      });
+    });
+
+    // Remove error message for textarea when it receives value
+    textarea.addEventListener("input", () => {
+      const errorElement = textarea.parentElement?.querySelector("p");
+      if (errorElement) {
+        errorElement.classList.add("hidden");
+      }
+    });
+
+    // Remove error message for consent input when it receives value
+    consentInput.addEventListener("change", () => {
+      const errorElement = consentInput.parentElement?.parentElement?.querySelector("p");
+      if (errorElement) {
+        errorElement.classList.add("hidden");
+      }
+    });
+
+    // Add event listener to the radio buttons
+    // Remove error message for fieldset when radio button is clicked
+    radioButtons.forEach((radioButton) => {
+      radioButton.addEventListener("click", (event) => {
+        const target: HTMLElement = event.target as HTMLElement;
+        handleRadioButtonClick(target.id);
+
+        const errorElement = fieldset.parentElement?.querySelector("#query-type-error");
+        if (errorElement) {
+          errorElement.classList.add("hidden");
+        }
+      });
+    });
+
+    // Upon focus of the "Query Type" fieldset, set the background color of the first radio button and check it
     const firstRadioButton = document.getElementById("general-inquiry") as HTMLInputElement;
     fieldset.addEventListener(
       "focus",
