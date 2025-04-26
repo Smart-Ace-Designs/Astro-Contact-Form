@@ -144,6 +144,11 @@ export const prerender = false;
         successDiv.classList.remove("hidden");
         successDiv.removeAttribute("aria-hidden");
         successDiv.setAttribute("aria-live", "polite");
+        setTimeout(() => {
+          successDiv.classList.add("hidden");
+          successDiv.removeAttribute("aria-live");
+          successDiv.setAttribute("aria-hidden", "true");
+        }, 5000);
       }
       form.reset();
     }
