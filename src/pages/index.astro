@@ -161,11 +161,15 @@ export const prerender = false;
     };
 
     // Remove error message for PII inputs when they receive value
-    piiInputs.forEach((input) => {
+    (piiInputs as NodeListOf<HTMLInputElement>).forEach((input) => {
       input.addEventListener("input", () => {
         const errorElement = input.parentElement?.querySelector("p");
         if (errorElement) {
-          errorElement.classList.add("hidden");
+          if (input.value.trim() === "") {
+            errorElement.classList.remove("hidden");
+          } else {
+            errorElement.classList.add("hidden");
+          }
         }
       });
     });
@@ -174,7 +178,11 @@ export const prerender = false;
     textarea.addEventListener("input", () => {
       const errorElement = textarea.parentElement?.querySelector("p");
       if (errorElement) {
-        errorElement.classList.add("hidden");
+        if (textarea.value.trim() !== "") {
+          errorElement.classList.add("hidden");
+        } else {
+          errorElement.classList.remove("hidden");
+        }
       }
     });
 
