@@ -15,32 +15,32 @@ export const prerender = false;
   title="Frontend Mentor | Contact Form"
   description="A contact form challenge from Frontend Mentor."
 >
-  <main class="bg-theme-green-lighter relative flex min-h-screen justify-center px-4 py-8 sm:pt-31">
+  <main class="relative flex min-h-screen justify-center bg-theme-green-lighter px-4 py-8 sm:pt-31">
     <!-- Success Message -->
     <div
-      class="bg-theme-grey-darker text-theme-white absolute top-2 hidden rounded-xl p-6 sm:top-6"
+      class="absolute top-2 hidden rounded-xl bg-theme-grey-darker p-6 text-theme-white sm:top-6"
       id="success"
       aria-hidden="true"
     >
       <div class="mb-2 flex flex-row gap-x-2">
         <img src="/icon-success-check.svg" alt="Success!" />
-        <h2 class="text-theme-green-lighter text-lg">Message Sent!</h2>
+        <h2 class="text-lg text-theme-green-lighter">Message Sent!</h2>
       </div>
-      <p class="text-theme-green-lighter text-[15px] font-extralight">
+      <p class="text-[15px] font-extralight text-theme-green-lighter">
         Thanks for completeting the form. We'll be in touch soon!
       </p>
     </div>
 
     <!-- Form -->
-    <div class="bg-theme-white w-85 rounded-2xl p-6 sm:w-xl sm:p-9 md:w-2xl lg:w-[720px]">
-      <h1 class="text-theme-grey-darker mb-8 text-3xl font-bold">Contact Us</h1>
+    <div class="w-85 rounded-2xl bg-theme-white p-6 sm:w-xl sm:p-9 md:w-2xl lg:w-[720px]">
+      <h1 class="mb-8 text-3xl font-bold text-theme-grey-darker">Contact Us</h1>
       <form method="post" action={actions.request} data-success={success ? "true" : "false"}>
         <div class="sm:grid sm:grid-cols-2 sm:gap-x-4">
           <div class="mb-6 flex flex-col">
             <PII name="firstName" autocomplete="given-name">First Name</PII>
             {
               inputErrors.firstName && (
-                <p class="text-theme-red mt-2 text-sm">{inputErrors.firstName}</p>
+                <p class="mt-2 text-sm text-theme-red">{inputErrors.firstName}</p>
               )
             }
           </div>
@@ -48,7 +48,7 @@ export const prerender = false;
             <PII name="lastName" autocomplete="family-name">Last Name</PII>
             {
               inputErrors.lastName && (
-                <p class="text-theme-red mt-2 text-sm">{inputErrors.lastName}</p>
+                <p class="mt-2 text-sm text-theme-red">{inputErrors.lastName}</p>
               )
             }
           </div>
@@ -56,7 +56,7 @@ export const prerender = false;
             <PII name="emailAddress" autocomplete="email">Email Address</PII>
             {
               inputErrors.emailAddress && (
-                <p class="text-theme-red mt-2 text-sm">{inputErrors.emailAddress}</p>
+                <p class="mt-2 text-sm text-theme-red">{inputErrors.emailAddress}</p>
               )
             }
           </div>
@@ -78,7 +78,7 @@ export const prerender = false;
           </fieldset>
           {
             inputErrors.type && (
-              <p class="text-theme-red mt-2 text-sm" id="query-type-error">
+              <p class="mt-2 text-sm text-theme-red" id="query-type-error">
                 {inputErrors.type}
               </p>
             )
@@ -93,9 +93,9 @@ export const prerender = false;
             transition:persist
             name="message"
             id="message"
-            class="border-theme-grey-medium focus:border-theme-green-medium h-60 resize-none rounded-lg border-1 px-4 py-2 hover:cursor-pointer focus:outline-none sm:h-24"
+            class="h-60 resize-none rounded-lg border-1 border-theme-grey-medium px-4 py-2 hover:cursor-pointer focus:border-theme-green-medium focus:outline-none sm:h-24"
             aria-required="true"></textarea>
-          {inputErrors.message && <p class="text-theme-red mt-2 text-sm">{inputErrors.message}</p>}
+          {inputErrors.message && <p class="mt-2 text-sm text-theme-red">{inputErrors.message}</p>}
         </div>
         <div class="mb-10">
           <div class="flex items-center gap-x-5">
@@ -104,7 +104,7 @@ export const prerender = false;
               type="checkbox"
               id="consent"
               name="consent"
-              class="border-theme-grey-medium size-5 checked:h-4 checked:appearance-none checked:border-none checked:bg-[url('/icon-checkbox-check.svg')] checked:bg-center sm:size-4"
+              class="size-5 border-theme-grey-medium checked:h-4 checked:appearance-none checked:border-none checked:bg-[url('/icon-checkbox-check.svg')] checked:bg-center sm:size-4"
               aria-required="true"
             />
             <label for="consent"
@@ -113,11 +113,11 @@ export const prerender = false;
               ></label
             >
           </div>
-          {inputErrors.consent && <p class="text-theme-red mt-2 text-sm">{inputErrors.consent}</p>}
+          {inputErrors.consent && <p class="mt-2 text-sm text-theme-red">{inputErrors.consent}</p>}
         </div>
 
         <button
-          class="bg-theme-green-medium text-theme-white hover:bg-theme-grey-darker w-full rounded-lg py-4 text-lg hover:cursor-pointer"
+          class="w-full rounded-lg bg-theme-green-medium py-4 text-lg text-theme-white hover:cursor-pointer hover:bg-theme-grey-darker"
           id="submit">Submit</button
         >
       </form>
