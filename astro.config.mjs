@@ -19,7 +19,7 @@ export default defineConfig({
         provider: fontProviders.google(),
         name: "Karla",
         cssVariable: "--font-karla",
-        weights: ["200", "400", "700"],
+        weights: [200, 400, 700],
         styles: ["normal"],
         subsets: ["latin"],
       },
