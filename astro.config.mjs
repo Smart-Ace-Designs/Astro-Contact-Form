@@ -21,7 +21,6 @@ export default defineConfig({
         cssVariable: "--font-karla",
         weights: [200, 400, 700],
         styles: ["normal"],
-        subsets: ["latin"],
       },
     ],
   },
