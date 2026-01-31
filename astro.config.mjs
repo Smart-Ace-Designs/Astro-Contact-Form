@@ -10,8 +10,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-
-  integrations: [],
   adapter: netlify(),
   experimental: {
     fonts: [
