@@ -10,20 +10,16 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-
   adapter: node({
     mode: "standalone",
   }),
-
-  experimental: {
-    fonts: [
-      {
-        provider: fontProviders.google(),
-        name: "Karla",
-        cssVariable: "--font-karla",
-        weights: [200, 400, 700],
-        styles: ["normal"],
-      },
-    ],
-  },
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "Karla",
+      cssVariable: "--font-karla",
+      weights: [200, 400, 700],
+      styles: ["normal"],
+    },
+  ],
 });
