@@ -1,29 +1,31 @@
 import { defineAction } from "astro:actions";
-import { z } from "astro:schema";
+import { z } from "astro/zod";
 
 export const server = {
   request: defineAction({
     accept: "form",
     input: z.object({
       firstName: z
-        .string({ message: "This field is required" })
-        .min(1, { message: "This field is required" }),
+        .string({ error: "This field is required" })
+        .min(1, { error: "This field is required" }),
       lastName: z
-        .string({ message: "This field is required" })
-        .min(1, { message: "This field is required" }),
-      emailAddress: z
-        .string({ message: "Please enter a valid email address" })
-        .min(1, { message: "Please enter a valid email address" })
-        .email({ message: "A valid email address name is required" }),
+        .string({ error: "This field is required" })
+        .min(1, { error: "This field is required" }),
+      emailAddress: z.email({
+        error: (issue) =>
+          issue.input === "" || issue.input === undefined
+            ? "Please enter a valid email address"
+            : "A valid email address name is required",
+      }),
       type: z.enum(["support-request", "general-inquiry"], {
-        message: "Please select a query type",
+        error: "Please select a query type",
       }),
       message: z
-        .string({ message: "This field is required" })
-        .min(1, { message: "This field is required" }),
+        .string({ error: "This field is required" })
+        .min(1, { error: "This field is required" }),
       consent: z
         .string({
-          message: "To submit this form, please consent to being contacted",
+          error: "To submit this form, please consent to being contacted",
         })
         .transform((value) => value === "on"),
     }),
