@@ -15,6 +15,7 @@ const { uid, ...rest } = Astro.props;
   <span class="relative inline-block">
     <input
       type="radio"
+      id={slugify(uid)}
       value={slugify(uid)}
       class="peer absolute cursor-pointer opacity-0"
       {...rest}
